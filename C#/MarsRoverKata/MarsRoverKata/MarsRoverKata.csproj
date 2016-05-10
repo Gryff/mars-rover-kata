@@ -48,17 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CircularLinkedList.cs" />
-    <Compile Include="Grid.cs" />
-    <Compile Include="GridShould.cs" />
-    <Compile Include="MarsRoverGame.cs" />
-    <Compile Include="MarsRoverGameShould.cs" />
+    <Compile Include="Src\CircularLinkedList.cs" />
+    <Compile Include="Src\Grid.cs" />
+    <Compile Include="Tests\GridShould.cs" />
+    <Compile Include="Src\MarsRoverGame.cs" />
+    <Compile Include="Tests\MarsRoverGameShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rover.cs" />
-    <Compile Include="RoverShould.cs" />
+    <Compile Include="Src\Rover.cs" />
+    <Compile Include="Tests\RoverShould.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="UserStories.txt" />
+    <Content Include="Tests\UserStories.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
