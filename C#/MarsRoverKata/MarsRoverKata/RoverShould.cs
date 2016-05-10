@@ -61,7 +61,7 @@ namespace MarsRoverKata
         }
 
         [Test]
-        public void Move_forward()
+        public void Move_forward_in_correct_direction()
         {
             _rover = new Rover();
 
