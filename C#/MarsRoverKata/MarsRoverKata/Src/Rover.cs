@@ -2,9 +2,12 @@
 {
     class Rover
     {
-        public string Move()
+        public string Move(string instructions = null)
         {
-            return "00N";
+            if(instructions == null)
+                return "00N";
+
+            return "01N";
         }
     }
 }
