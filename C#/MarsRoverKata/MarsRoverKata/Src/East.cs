@@ -2,14 +2,10 @@
 {
     internal class East : IDirection
     {
-        public IDirection RotateLeft()
-        {
-            return new North();
-        }
+        public IDirection RotateLeft() => new North();
 
-        public IDirection RotateRight()
-        {
-            return new South();
-        }
+        public IDirection RotateRight() => new South();
+
+        public char ToOutputFormat() => 'E';
     }
 }

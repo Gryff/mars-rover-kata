@@ -2,14 +2,10 @@
 {
     class West : IDirection
     {
-        public IDirection RotateLeft()
-        {
-            return new South();
-        }
+        public IDirection RotateLeft() => new South();
 
-        public IDirection RotateRight()
-        {
-            return new North();
-        }
+        public IDirection RotateRight() => new North();
+        
+        public char ToOutputFormat() => 'W';
     }
 }

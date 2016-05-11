@@ -4,5 +4,6 @@
     {
         IDirection RotateLeft();
         IDirection RotateRight();
+        char ToOutputFormat();
     }
 }
