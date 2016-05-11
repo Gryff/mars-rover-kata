@@ -3,5 +3,6 @@
     interface IDirection
     {
         IDirection RotateLeft();
+        IDirection RotateRight();
     }
 }

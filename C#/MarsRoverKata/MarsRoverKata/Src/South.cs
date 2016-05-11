@@ -6,5 +6,10 @@ namespace MarsRoverKata.Src
         {
             return new East();
         }
+
+        public IDirection RotateRight()
+        {
+            return new West();
+        }
     }
 }

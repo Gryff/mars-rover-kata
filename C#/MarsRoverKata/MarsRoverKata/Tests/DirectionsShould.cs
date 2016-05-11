@@ -21,5 +21,21 @@ namespace MarsRoverKata.Tests
             var west = new West();
             Assert.That(west.RotateLeft(), Is.InstanceOf(typeof(South)));
         }
+
+        [Test]
+        public void Rotate_position_right()
+        {
+            var north = new North();
+            Assert.That(north.RotateRight(), Is.InstanceOf(typeof(East)));
+
+            var east = new East();
+            Assert.That(east.RotateRight(), Is.InstanceOf(typeof(South)));
+
+            var south = new South();
+            Assert.That(south.RotateRight(), Is.InstanceOf(typeof(West)));
+
+            var west = new West();
+            Assert.That(west.RotateRight(), Is.InstanceOf(typeof(North)));
+        }
     }
 }

@@ -6,5 +6,10 @@
         {
             return new West();
         }
+
+        public IDirection RotateRight()
+        {
+            return new East();
+        }
     }
 }
