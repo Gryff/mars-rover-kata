@@ -2,8 +2,7 @@
 {
     class Rover
     {
-        private int _x = 0;
-        private int _y = 0;
+        private GridPosition _position = new GridPosition(0, 0);
         private IDirection _direction = new North();
 
         public string Move(string instructions = null)
@@ -13,7 +12,7 @@
                 foreach (var instruction in instructions)
                 {
                     if (instruction == 'M')
-                        MoveForward();
+                        _position = _direction.MoveForwardFrom(_position);
                     if (instruction == 'L')
                         _direction = _direction.RotateLeft();
                     if (instruction == 'R')
@@ -21,12 +20,7 @@
                 }
             }
 
-            return $"{_x}{_y}{_direction.ToOutputFormat()}";
-        }
-
-        private void MoveForward()
-        {
-            _y += 1;
+            return $"{_position.ToOutputFormat()}{_direction.ToOutputFormat()}";
         }
     }
 }
