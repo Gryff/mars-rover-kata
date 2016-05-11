@@ -1,4 +1,6 @@
-﻿namespace MarsRoverKata.Src
+﻿using System.Linq;
+
+namespace MarsRoverKata.Src
 {
     class Rover
     {
@@ -7,20 +9,19 @@
 
         public string Move(string instructions = null)
         {
-            if (instructions != null)
-            {
-                foreach (var instruction in instructions)
-                {
-                    if (instruction == 'M')
-                        _position = _direction.MoveForwardFrom(_position);
-                    if (instruction == 'L')
-                        _direction = _direction.RotateLeft();
-                    if (instruction == 'R')
-                        _direction = _direction.RotateRight();
-                }
-            }
+            instructions?.ToList().ForEach(ExecuteInstruction);
 
             return $"{_position.ToOutputFormat()}{_direction.ToOutputFormat()}";
+        }
+
+        private void ExecuteInstruction(char instruction)
+        {
+            if (instruction == 'M')
+                _position = _direction.MoveForwardFrom(_position);
+            if (instruction == 'L')
+                _direction = _direction.RotateLeft();
+            if (instruction == 'R')
+                _direction = _direction.RotateRight();
         }
     }
 }
