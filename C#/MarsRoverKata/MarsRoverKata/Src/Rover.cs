@@ -8,10 +8,21 @@
 
         public string Move(string instructions = null)
         {
-            if(instructions != null)
-                _y += 1;
+            if (instructions != null)
+            {
+                foreach (var instruction in instructions)
+                {
+                    if (instruction == 'M')
+                        MoveForward();
+                }
+            }
 
             return $"{_x}{_y}{_direction}";
+        }
+
+        private void MoveForward()
+        {
+            _y += 1;
         }
     }
 }

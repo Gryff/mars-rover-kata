@@ -19,8 +19,7 @@ namespace MarsRoverKata.Tests
         {
             Assert.That(_rover.Move(), Is.EqualTo("00N"));
         }
-
-
+        
         [Test]
         public void Be_able_to_move_North()
         {
