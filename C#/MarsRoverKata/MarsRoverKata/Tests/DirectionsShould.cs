@@ -37,5 +37,31 @@ namespace MarsRoverKata.Tests
             var west = new West();
             Assert.That(west.RotateRight(), Is.InstanceOf(typeof(North)));
         }
+
+        [Test]
+        public void Determine_GridPosition_to_move_to()
+        {
+            var startingPosition = new GridPosition(1, 1);
+
+            var north = new North();
+            var newPosition = north.MoveForwardFrom(startingPosition);
+            Assert.That(newPosition.X, Is.EqualTo(1));
+            Assert.That(newPosition.Y, Is.EqualTo(2));
+
+            var east = new East();
+            newPosition = east.MoveForwardFrom(startingPosition);
+            Assert.That(newPosition.X, Is.EqualTo(2));
+            Assert.That(newPosition.Y, Is.EqualTo(1));
+
+            var south = new South();
+            newPosition = south.MoveForwardFrom(startingPosition);
+            Assert.That(newPosition.X, Is.EqualTo(1));
+            Assert.That(newPosition.Y, Is.EqualTo(0));
+
+            var west = new West();
+            newPosition = west.MoveForwardFrom(startingPosition);
+            Assert.That(newPosition.X, Is.EqualTo(0));
+            Assert.That(newPosition.Y, Is.EqualTo(1));
+        }
     }
 }
