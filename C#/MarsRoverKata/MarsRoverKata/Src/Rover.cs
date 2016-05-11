@@ -14,10 +14,17 @@
                 {
                     if (instruction == 'M')
                         MoveForward();
+                    if (instruction == 'L')
+                        RotateLeft();
                 }
             }
 
             return $"{_x}{_y}{_direction}";
+        }
+
+        private void RotateLeft()
+        {
+            _direction = 'W';
         }
 
         private void MoveForward()

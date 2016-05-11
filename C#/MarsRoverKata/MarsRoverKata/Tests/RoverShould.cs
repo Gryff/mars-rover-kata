@@ -26,5 +26,11 @@ namespace MarsRoverKata.Tests
             Assert.That(_rover.Move("M"), Is.EqualTo("01N"));
             Assert.That(_rover.Move("M"), Is.EqualTo("02N"));
         }
+
+        [Test]
+        public void Be_able_to_rotate_left()
+        {
+            Assert.That(_rover.Move("L"), Is.EqualTo("00W"));
+        }
     }
 }
