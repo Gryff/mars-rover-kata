@@ -16,6 +16,8 @@
                         MoveForward();
                     if (instruction == 'L')
                         _direction = RotateLeft(_direction);
+                    if (instruction == 'R')
+                        _direction = RotateRight(_direction);
                 }
             }
 
@@ -32,6 +34,20 @@
                 return 'E';
             if(direction == 'W')
                 return 'S';
+
+            return char.MinValue;
+        }
+
+        private char RotateRight(char direction)
+        {
+            if (direction == 'N')
+                return 'E';
+            if (direction == 'E')
+                return 'S';
+            if (direction == 'S')
+                return 'W';
+            if (direction == 'W')
+                return 'N';
 
             return char.MinValue;
         }
