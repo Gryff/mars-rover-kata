@@ -44,5 +44,14 @@ namespace MarsRoverKata.Tests
             Assert.That(_rover.Move("R"), Is.EqualTo("00W"));
             Assert.That(_rover.Move("R"), Is.EqualTo("00N"));
         }
+
+        [Test]
+        public void Wrap_around_grid_when_it_reaches_a_boundary()
+        {
+            Assert.That(_rover.Move("MMMMMMMMMM"), Is.EqualTo("00N"));
+            Assert.That(_rover.Move("RMMMMMMMMMM"), Is.EqualTo("00E"));
+            Assert.That(_rover.Move("LLMMMMMMMMMM"), Is.EqualTo("00W"));
+            Assert.That(_rover.Move("LMMMMMMMMMM"), Is.EqualTo("00S"));
+        }
     }
 }

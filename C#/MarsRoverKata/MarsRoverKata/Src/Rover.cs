@@ -4,6 +4,7 @@ namespace MarsRoverKata.Src
 {
     class Rover
     {
+        private readonly GridSize _gridSize = new GridSize(10, 10);
         private GridPosition _position = new GridPosition(0, 0);
         private IDirection _direction = new North();
 
@@ -17,7 +18,7 @@ namespace MarsRoverKata.Src
         private void ExecuteInstruction(char instruction)
         {
             if (instruction == 'M')
-                _position = _direction.MoveForwardFrom(_position);
+                _position = _direction.MoveForwardFrom(_position, _gridSize);
             if (instruction == 'L')
                 _direction = _direction.RotateLeft();
             if (instruction == 'R')
