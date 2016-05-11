@@ -15,16 +15,25 @@
                     if (instruction == 'M')
                         MoveForward();
                     if (instruction == 'L')
-                        RotateLeft();
+                        _direction = RotateLeft(_direction);
                 }
             }
 
             return $"{_x}{_y}{_direction}";
         }
 
-        private void RotateLeft()
+        private char RotateLeft(char direction)
         {
-            _direction = 'W';
+            if(direction == 'N')
+                return 'W';
+            if(direction == 'E')
+                return 'N';
+            if(direction == 'S')
+                return 'E';
+            if(direction == 'W')
+                return 'S';
+
+            return char.MinValue;
         }
 
         private void MoveForward()
