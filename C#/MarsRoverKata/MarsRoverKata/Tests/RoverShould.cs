@@ -53,5 +53,15 @@ namespace MarsRoverKata.Tests
         {
             Assert.That(_rover.Move(instructions), Is.EqualTo(expectedPosition));
         }
+        [TestCase("M", 0, 1, "O00N")]
+        [TestCase("MMMMRMMMM", 4, 4, "O34E")]
+        [TestCase("MRMLMMMMMMMMM", 1, 0, "O19N")]
+        public void Report_if_it_hits_an_obstacle_with_last_position(string instructions, int x, int y, string expectedPosition)
+        {
+            var obstacle = new GridPosition(x, y);
+            _rover = new Rover(obstacle);
+
+            Assert.That(_rover.Move(instructions), Is.EqualTo(expectedPosition));
+        }
     }
 }
