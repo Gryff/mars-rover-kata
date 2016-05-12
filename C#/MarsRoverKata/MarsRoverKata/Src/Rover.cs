@@ -7,7 +7,6 @@ namespace MarsRoverKata.Src
         private readonly Grid _grid;
         private GridPosition _position = new GridPosition(0, 0);
         private IDirection _direction = new North();
-        private bool _hasHitObstacle;
 
         public Rover(GridPosition obstacle = null)
         {
@@ -16,36 +15,29 @@ namespace MarsRoverKata.Src
 
         public string Move(string instructions)
         {
-            instructions.ToList().ForEach(ExecuteInstruction);
+            try
+            {
+                instructions.ToList().ForEach(ExecuteInstruction);
+            }
+            catch (EncounteredObstacleException)
+            {
+                return $"O{ReportLocation()}";
+            }
 
-            return $"{ReportObstacle()}{_position.ToOutputFormat()}{_direction.ToOutputFormat()}";
+            return ReportLocation();
         }
 
         private void ExecuteInstruction(char instruction)
         {
-            if (_hasHitObstacle) return;
-
             if (instruction == 'M')
-                _position = CheckForObstacle(
-                    _position, _direction.MoveForwardFrom(_position, _grid));
+                _position = _direction.MoveForwardFrom(_position, _grid);
             if (instruction == 'L')
                 _direction = _direction.RotateLeft();
             if (instruction == 'R')
                 _direction = _direction.RotateRight();
         }
 
-        private GridPosition CheckForObstacle(GridPosition position, GridPosition newPosition)
-        {
-            if (position.Equals(newPosition))
-            {
-                _hasHitObstacle = true;
-                return position;
-            }
-
-            return newPosition;
-        }
-
-        private string ReportObstacle() =>
-            _hasHitObstacle ? "O" : string.Empty;
+        private string ReportLocation() =>
+            $"{_position.ToOutputFormat()}{_direction.ToOutputFormat()}";
     }
 }

@@ -60,13 +60,14 @@ namespace MarsRoverKata.Tests
         }
 
         [Test]
-        public void Return_original_position_if_obstacle_is_in_the_way()
+        public void Throw_an_Exception_if_obstacle_is_in_the_way()
         {
             var obstacle = new GridPosition(0, 1);
             _grid = new Grid(10, 10, obstacle);
             var position = new GridPosition(0, 0);
 
-            Assert.That(_grid.MoveNorth(position), Is.EqualTo(position));
+            Assert.Throws<EncounteredObstacleException>(
+                () => _grid.MoveNorth(position));
         }
 
         [Test]
@@ -76,7 +77,8 @@ namespace MarsRoverKata.Tests
             _grid = new Grid(10, 10, obstacle);
             var position = new GridPosition(9, 0);
 
-            Assert.That(_grid.MoveEast(position), Is.EqualTo(position));
+            Assert.Throws<EncounteredObstacleException>(
+                () => _grid.MoveEast(position));
         }
     }
 }

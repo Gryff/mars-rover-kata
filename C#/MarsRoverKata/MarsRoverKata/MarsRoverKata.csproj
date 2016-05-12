@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\East.cs" />
+    <Compile Include="Src\EncounteredObstacleException.cs" />
     <Compile Include="Src\Grid.cs" />
     <Compile Include="Src\GridPosition.cs" />
     <Compile Include="Src\GridSize.cs" />

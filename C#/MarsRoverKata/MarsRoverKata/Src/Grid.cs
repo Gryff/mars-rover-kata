@@ -16,19 +16,24 @@
         }
 
         public GridPosition MoveNorth(GridPosition position) =>
-            CheckForObstacles(position, WrapAroundIfNecessary(position.X, position.Y + 1));
+            CheckForObstacles(WrapAroundIfNecessary(position.X, position.Y + 1));
 
         public GridPosition MoveEast(GridPosition position) =>
-            CheckForObstacles(position, WrapAroundIfNecessary(position.X + 1, position.Y));
+            CheckForObstacles(WrapAroundIfNecessary(position.X + 1, position.Y));
 
         public GridPosition MoveSouth(GridPosition position) =>
-            CheckForObstacles(position, WrapAroundIfNecessary(position.X, position.Y - 1));
+            CheckForObstacles(WrapAroundIfNecessary(position.X, position.Y - 1));
 
         public GridPosition MoveWest(GridPosition position) =>
-            CheckForObstacles(position, WrapAroundIfNecessary(position.X - 1, position.Y));
+            CheckForObstacles(WrapAroundIfNecessary(position.X - 1, position.Y));
 
-        private GridPosition CheckForObstacles(GridPosition position, GridPosition newPosition) =>
-            newPosition.Equals(_obstacle) ? position : newPosition;
+        private GridPosition CheckForObstacles(GridPosition newPosition)
+        {
+            if (newPosition.Equals(_obstacle))
+                throw new EncounteredObstacleException();
+                    
+            return newPosition;
+        }
 
         private GridPosition WrapAroundIfNecessary(int x, int y)
         {
