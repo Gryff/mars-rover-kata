@@ -20,38 +20,38 @@ namespace MarsRoverKata.Tests
             Assert.That(_rover.Move(""), Is.EqualTo("00N"));
         }
         
-        [Test]
-        public void Be_able_to_move_North()
+        [TestCase("M", "01N")]
+        [TestCase("MM", "02N")]
+        public void Be_able_to_move_North(string instructions, string expectedPosition)
         {
-            Assert.That(_rover.Move("M"), Is.EqualTo("01N"));
-            Assert.That(_rover.Move("M"), Is.EqualTo("02N"));
+            Assert.That(_rover.Move(instructions), Is.EqualTo(expectedPosition));
         }
 
-        [Test]
-        public void Be_able_to_rotate_left()
+        [TestCase("L", "00W")]
+        [TestCase("LL", "00S")]
+        [TestCase("LLL", "00E")]
+        [TestCase("LLLL", "00N")]
+        public void Be_able_to_rotate_left(string instructions, string expectedPosition)
         {
-            Assert.That(_rover.Move("L"), Is.EqualTo("00W"));
-            Assert.That(_rover.Move("L"), Is.EqualTo("00S"));
-            Assert.That(_rover.Move("L"), Is.EqualTo("00E"));
-            Assert.That(_rover.Move("L"), Is.EqualTo("00N"));
+            Assert.That(_rover.Move(instructions), Is.EqualTo(expectedPosition));
         }
 
-        [Test]
-        public void Be_able_to_rotate_right()
+        [TestCase("R", "00E")]
+        [TestCase("RR", "00S")]
+        [TestCase("RRR", "00W")]
+        [TestCase("RRRR", "00N")]
+        public void Be_able_to_rotate_right(string instructions, string expectedPosition)
         {
-            Assert.That(_rover.Move("R"), Is.EqualTo("00E"));
-            Assert.That(_rover.Move("R"), Is.EqualTo("00S"));
-            Assert.That(_rover.Move("R"), Is.EqualTo("00W"));
-            Assert.That(_rover.Move("R"), Is.EqualTo("00N"));
+            Assert.That(_rover.Move(instructions), Is.EqualTo(expectedPosition));
         }
 
-        [Test]
-        public void Wrap_around_grid_when_it_reaches_a_boundary()
+        [TestCase("MMMMMMMMMM", "00N")]
+        [TestCase("RMMMMMMMMMM", "00E")]
+        [TestCase("LMMMMMMMMMM", "00W")]
+        [TestCase("LLMMMMMMMMMM", "00S")]
+        public void Wrap_around_grid_when_it_reaches_a_boundary(string instructions, string expectedPosition)
         {
-            Assert.That(_rover.Move("MMMMMMMMMM"), Is.EqualTo("00N"));
-            Assert.That(_rover.Move("RMMMMMMMMMM"), Is.EqualTo("00E"));
-            Assert.That(_rover.Move("LLMMMMMMMMMM"), Is.EqualTo("00W"));
-            Assert.That(_rover.Move("LMMMMMMMMMM"), Is.EqualTo("00S"));
+            Assert.That(_rover.Move(instructions), Is.EqualTo(expectedPosition));
         }
     }
 }
