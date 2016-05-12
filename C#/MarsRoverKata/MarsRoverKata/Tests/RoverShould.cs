@@ -17,7 +17,7 @@ namespace MarsRoverKata.Tests
         [Test]
         public void Start_in_south_west_corner_facing_right()
         {
-            Assert.That(_rover.Move(), Is.EqualTo("00N"));
+            Assert.That(_rover.Move(""), Is.EqualTo("00N"));
         }
         
         [Test]

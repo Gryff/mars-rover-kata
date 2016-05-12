@@ -42,27 +42,27 @@ namespace MarsRoverKata.Tests
         public void Determine_GridPosition_to_move_to()
         {
             var startingPosition = new GridPosition(1, 1);
-            var gridSize = new GridSize(10,10);
+            var grid = new Grid(10,10);
 
             var north = new North();
-            var newPosition = north.MoveForwardFrom(startingPosition, gridSize);
-            Assert.That(newPosition.X, Is.EqualTo(1));
-            Assert.That(newPosition.Y, Is.EqualTo(2));
+            Assert.That(
+                north.MoveForwardFrom(startingPosition, grid), 
+                Is.EqualTo(new GridPosition(1, 2)));
 
             var east = new East();
-            newPosition = east.MoveForwardFrom(startingPosition, gridSize);
-            Assert.That(newPosition.X, Is.EqualTo(2));
-            Assert.That(newPosition.Y, Is.EqualTo(1));
+            Assert.That(
+                east.MoveForwardFrom(startingPosition, grid), 
+                Is.EqualTo(new GridPosition(2, 1)));
 
             var south = new South();
-            newPosition = south.MoveForwardFrom(startingPosition, gridSize);
-            Assert.That(newPosition.X, Is.EqualTo(1));
-            Assert.That(newPosition.Y, Is.EqualTo(0));
+            Assert.That(
+                south.MoveForwardFrom(startingPosition, grid), 
+                Is.EqualTo(new GridPosition(1, 0)));
 
             var west = new West();
-            newPosition = west.MoveForwardFrom(startingPosition, gridSize);
-            Assert.That(newPosition.X, Is.EqualTo(0));
-            Assert.That(newPosition.Y, Is.EqualTo(1));
+            Assert.That(
+                west.MoveForwardFrom(startingPosition, grid),
+                Is.EqualTo(new GridPosition(0, 1)));
         }
     }
 }

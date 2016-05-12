@@ -6,15 +6,8 @@
 
         public IDirection RotateRight() => new East();
 
-        public GridPosition MoveForwardFrom(GridPosition position, GridSize gridSize)
-        {
-            var newY = position.Y + 1;
-
-            if (newY == gridSize.MaxHeight)
-                newY = 0;
-
-            return new GridPosition(position.X, newY);
-        }
+        public GridPosition MoveForwardFrom(GridPosition position, Grid grid) =>
+            grid.MoveNorth(position);
 
         public char ToOutputFormat() => 'N';
     }
