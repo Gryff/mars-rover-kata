@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\East.cs" />
+    <Compile Include="Src\Grid.cs" />
     <Compile Include="Src\GridPosition.cs" />
     <Compile Include="Src\GridSize.cs" />
     <Compile Include="Src\IDirection.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Src\South.cs" />
     <Compile Include="Src\West.cs" />
     <Compile Include="Tests\DirectionsShould.cs" />
+    <Compile Include="Tests\GridShould.cs" />
     <Compile Include="Tests\RoverShould.cs" />
   </ItemGroup>
   <ItemGroup>

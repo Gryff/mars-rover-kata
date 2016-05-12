@@ -4,7 +4,7 @@
     {
         IDirection RotateLeft();
         IDirection RotateRight();
-        GridPosition MoveForwardFrom(GridPosition position, GridSize gridSize);
+        GridPosition MoveForwardFrom(GridPosition position, Grid grid);
         char ToOutputFormat();
     }
 }
