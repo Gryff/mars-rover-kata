@@ -57,7 +57,26 @@ namespace MarsRoverKata.Tests
             Assert.That(
                 _grid.MoveWest(position),
                 Is.EqualTo(new GridPosition(9, 0)));
+        }
 
+        [Test]
+        public void Return_original_position_if_obstacle_is_in_the_way()
+        {
+            var obstacle = new GridPosition(0, 1);
+            _grid = new Grid(10, 10, obstacle);
+            var position = new GridPosition(0, 0);
+
+            Assert.That(_grid.MoveNorth(position), Is.EqualTo(position));
+        }
+
+        [Test]
+        public void Return_original_unwrapped_position_if_obstacle_is_in_the_way()
+        {
+            var obstacle = new GridPosition(0, 0);
+            _grid = new Grid(10, 10, obstacle);
+            var position = new GridPosition(9, 0);
+
+            Assert.That(_grid.MoveEast(position), Is.EqualTo(position));
         }
     }
 }

@@ -4,26 +4,33 @@
     {
         private readonly int _maxWidth;
         private readonly int _maxHeight;
+        private readonly GridPosition _obstacle;
 
-        public Grid(int maxWidth, int maxHeight)
+        public Grid(int maxWidth, int maxHeight, GridPosition obstacle = null)
         {
             this._maxWidth = maxWidth;
             this._maxHeight = maxHeight;
+
+            if (obstacle != null)
+                this._obstacle = obstacle;
         }
 
         public GridPosition MoveNorth(GridPosition position) =>
-            WrapAroundIfNecessary(position.X, position.Y + 1);
+            CheckForObstacles(position, WrapAroundIfNecessary(position.X, position.Y + 1));
 
         public GridPosition MoveEast(GridPosition position) =>
-            WrapAroundIfNecessary(position.X + 1, position.Y);
+            CheckForObstacles(position, WrapAroundIfNecessary(position.X + 1, position.Y));
 
         public GridPosition MoveSouth(GridPosition position) =>
-            WrapAroundIfNecessary(position.X, position.Y - 1);
+            CheckForObstacles(position, WrapAroundIfNecessary(position.X, position.Y - 1));
 
         public GridPosition MoveWest(GridPosition position) =>
-            WrapAroundIfNecessary(position.X - 1, position.Y);
+            CheckForObstacles(position, WrapAroundIfNecessary(position.X - 1, position.Y));
 
-        public GridPosition WrapAroundIfNecessary(int x, int y)
+        private GridPosition CheckForObstacles(GridPosition position, GridPosition newPosition) =>
+            newPosition.Equals(_obstacle) ? position : newPosition;
+
+        private GridPosition WrapAroundIfNecessary(int x, int y)
         {
             if (x == _maxWidth)
                 x = 0;
