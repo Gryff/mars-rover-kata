@@ -10,7 +10,5 @@
             grid.MoveWest(position);
 
         public override string ToString() => "W";
-
-        public char ToOutputFormat() => 'W';
     }
 }

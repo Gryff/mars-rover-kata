@@ -10,7 +10,5 @@
             grid.MoveNorth(position);
 
         public override string ToString() => "N";
-
-        public char ToOutputFormat() => 'N';
     }
 }

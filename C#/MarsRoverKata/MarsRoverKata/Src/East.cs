@@ -10,7 +10,5 @@
             grid.MoveEast(position);
 
         public override string ToString() => "E";
-
-        public char ToOutputFormat() => 'E';
     }
 }

@@ -10,7 +10,5 @@ namespace MarsRoverKata.Src
             grid.MoveSouth(position);
 
         public override string ToString() => "S";
-
-        public char ToOutputFormat() => 'S';
     }
 }
