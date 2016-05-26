@@ -1,6 +1,6 @@
 ﻿namespace MarsRoverKata.Src
 {
-    class Grid
+    internal class Grid
     {
         private readonly int _maxWidth;
         private readonly int _maxHeight;

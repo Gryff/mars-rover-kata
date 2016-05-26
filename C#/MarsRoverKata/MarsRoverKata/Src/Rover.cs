@@ -2,7 +2,7 @@
 
 namespace MarsRoverKata.Src
 {
-    class Rover
+    internal class Rover
     {
         private readonly Grid _grid;
         private GridPosition _position = new GridPosition(0, 0);
@@ -38,6 +38,6 @@ namespace MarsRoverKata.Src
         }
 
         private string ReportLocation() =>
-            $"{_position.ToOutputFormat()}{_direction.ToOutputFormat()}";
+            $"{_position}{_direction.ToOutputFormat()}";
     }
 }

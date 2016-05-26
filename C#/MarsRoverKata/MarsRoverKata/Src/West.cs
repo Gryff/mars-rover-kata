@@ -1,6 +1,6 @@
 ﻿namespace MarsRoverKata.Src
 {
-    class West : IDirection
+    internal class West : IDirection
     {
         public IDirection RotateLeft() => new South();
 

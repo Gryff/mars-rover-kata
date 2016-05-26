@@ -1,6 +1,6 @@
 ﻿namespace MarsRoverKata.Src
 {
-    class GridPosition
+    internal class GridPosition
     {
         public readonly int X;
         public readonly int Y;
@@ -11,7 +11,7 @@
             this.X = x;
         }
 
-        public string ToOutputFormat() => $"{X}{Y}";
+        public override string ToString() => $"{X}{Y}";
 
         public override bool Equals(object obj)
         {

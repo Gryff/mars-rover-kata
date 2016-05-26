@@ -1,6 +1,6 @@
 ﻿namespace MarsRoverKata.Src
 {
-    interface IDirection
+    internal interface IDirection
     {
         IDirection RotateLeft();
         IDirection RotateRight();
