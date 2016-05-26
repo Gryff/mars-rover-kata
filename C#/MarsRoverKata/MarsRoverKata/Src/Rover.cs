@@ -38,6 +38,6 @@ namespace MarsRoverKata.Src
         }
 
         private string ReportLocation() =>
-            $"{_position}{_direction.ToOutputFormat()}";
+            $"{_position}{_direction}";
     }
 }

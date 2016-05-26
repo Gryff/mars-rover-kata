@@ -9,6 +9,8 @@
         public GridPosition MoveForwardFrom(GridPosition position, Grid grid) =>
             grid.MoveEast(position);
 
+        public override string ToString() => "E";
+
         public char ToOutputFormat() => 'E';
     }
 }
