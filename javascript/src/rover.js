@@ -2,12 +2,18 @@
 
 const rover = {
   move (commands) {
-    if (commands === 'L') return '00W'
+    let x = 0
+    let y = 0
+    let position = 'N'
 
-    const x = 0
-    const y = commands.length
+    for(let i = 0; i < commands.length; i++) {
+      const command = commands[i]
 
-    return `${x}${y}N`
+      if (command === 'M') y += 1
+      if (command === 'L') position = 'W'
+    }
+
+    return `${x}${y}${position}`
   }
 }
 
