@@ -1,0 +1,21 @@
+{
+  "name": "mars-rover-kata",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "ava": "^0.18.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "ava spec/*.spec.js",
+    "test:watch": "ava spec/*.spec.js --watch"
+  },
+  "keywords": [
+    "mars",
+    "rover",
+    "kata"
+  ],
+  "author": "Liam Griffin",
+  "license": "ISC"
+}
