@@ -10,3 +10,7 @@ test('doesnt move when given no commands', t => {
 test('can move forward', t => {
   t.is(rover.move('M'), '01N')
 })
+
+test('can move forward twice', t => {
+  t.is(rover.move('MM'), '02N')
+})
