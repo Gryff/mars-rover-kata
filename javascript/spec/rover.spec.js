@@ -1,7 +1,8 @@
 'use strict'
 
 import test from 'ava'
+import rover from '../src/rover'
 
-test('mars rover', t => {
-  t.fail()
+test('doesnt move when given no commands', t => {
+  t.deepEqual(rover.move(''), '00N')
 })
