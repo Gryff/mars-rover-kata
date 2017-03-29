@@ -11,6 +11,8 @@ test('can move forward', t => {
   t.is(rover.move('M'), '01N')
 })
 
-test('can move forward twice', t => {
-  t.is(rover.move('MM'), '02N')
-})
+test('can move forward twice', testRover, 'MM', '02N')
+
+function testRover (t, commands, expectedPosition) {
+  t.is(rover.move(commands), expectedPosition)
+}
