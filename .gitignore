@@ -244,3 +244,7 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# idea files in js folder
+javascript/.idea/
+
