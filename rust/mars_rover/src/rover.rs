@@ -7,7 +7,7 @@ mod rover_tests {
     use super::*;
 
     #[test]
-    fn my_first_test() {
+    fn starts_at_0_0_n() {
         assert_eq!(go(""), "0,0,N");
     }
 }
