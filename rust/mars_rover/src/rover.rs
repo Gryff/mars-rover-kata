@@ -3,12 +3,11 @@ pub fn go(commands: &str) -> String {
 
     for command in commands.chars() {
         if command == 'M' {
-            x += 1;
+            x = (x + 1) % 10;
         }
     }
 
     format!("0,{},N", x)
-
 }
 
 #[cfg(test)]
@@ -28,5 +27,10 @@ mod rover_tests {
     #[test]
     fn can_move_north_twice() {
         assert_eq!(go("MM"), "0,2,N");
+    }
+
+    #[test]
+    fn wraps_around_grid_moving_north() {
+        assert_eq!(go("MMMMMMMMMMMM"), "0,2,N");
     }
 }
