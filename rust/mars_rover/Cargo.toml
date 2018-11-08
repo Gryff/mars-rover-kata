@@ -1,0 +1,6 @@
+[package]
+name = "mars_rover"
+version = "0.1.0"
+authors = ["Liam Griffin <gryffskin@gmail.com>"]
+
+[dependencies]
