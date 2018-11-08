@@ -1,5 +1,5 @@
 mod rover;
 
 fn main() {
-    rover::go();
+    rover::go("");
 }
