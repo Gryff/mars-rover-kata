@@ -1,11 +1,14 @@
 pub fn go(commands: &str) -> String {
-    if commands == "M" {
-        "0,1,N".to_string()
-    } else if commands == "MM" {
-        "0,2,N".to_string()
-    } else {
-        "0,0,N".to_string()
+    let mut x = 0;
+
+    for command in commands.chars() {
+        if command == 'M' {
+            x += 1;
+        }
     }
+
+    format!("0,{},N", x)
+
 }
 
 #[cfg(test)]
