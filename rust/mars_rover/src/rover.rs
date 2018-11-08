@@ -1,5 +1,9 @@
 pub fn go(commands: &str) -> String {
-    "0,0,N".to_string()
+    if commands == "M" {
+        "0,1,N".to_string()
+    } else {
+        "0,0,N".to_string()
+    }
 }
 
 #[cfg(test)]
@@ -9,5 +13,10 @@ mod rover_tests {
     #[test]
     fn starts_at_0_0_n() {
         assert_eq!(go(""), "0,0,N");
+    }
+
+    #[test]
+    fn can_move_north() {
+        assert_eq!(go("M"), "0,1,N");
     }
 }
