@@ -8,7 +8,11 @@ pub fn go(commands: &str) -> String {
         }
 
         if command == 'R' {
-            direction = 'E';
+            if direction == 'N' {
+                direction = 'E';
+            } else if direction == 'E' {
+                direction = 'S'
+            }
         }
     }
 
@@ -42,5 +46,10 @@ mod rover_tests {
     #[test]
     fn can_rotate_right() {
         assert_eq!(go("R"), "0,0,E");
+    }
+
+    #[test]
+    fn can_rotate_right_twice() {
+        assert_eq!(go("RR"), "0,0,S");
     }
 }
