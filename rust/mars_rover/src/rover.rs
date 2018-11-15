@@ -19,6 +19,24 @@ pub fn go(commands: &str) -> String {
     format!("0,{},{}", x, direction)
 }
 
+enum Direction {
+    North,
+    East,
+    South,
+    West
+}
+
+impl Direction {
+    fn to_string(self) -> char {
+        match self {
+            Direction::North => 'N',
+            Direction::East => 'E',
+            Direction::South => 'S',
+            Direction::West => 'W',
+        }
+    }
+}
+
 #[cfg(test)]
 mod rover_tests {
     use super::*;
