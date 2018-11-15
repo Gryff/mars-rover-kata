@@ -1,13 +1,18 @@
 pub fn go(commands: &str) -> String {
     let mut x = 0;
+    let mut direction = 'N';
 
     for command in commands.chars() {
         if command == 'M' {
             x = (x + 1) % 10;
         }
+
+        if command == 'R' {
+            direction = 'E';
+        }
     }
 
-    format!("0,{},N", x)
+    format!("0,{},{}", x, direction)
 }
 
 #[cfg(test)]
@@ -32,5 +37,10 @@ mod rover_tests {
     #[test]
     fn wraps_around_grid_moving_north() {
         assert_eq!(go("MMMMMMMMMMMM"), "0,2,N");
+    }
+
+    #[test]
+    fn can_rotate_right() {
+        assert_eq!(go("R"), "0,0,E");
     }
 }
