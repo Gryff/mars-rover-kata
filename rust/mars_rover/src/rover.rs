@@ -1,6 +1,6 @@
 pub fn go(commands: &str) -> String {
     let mut x = 0;
-    let mut direction = 'N';
+    let mut direction = Direction::North;
 
     for command in commands.chars() {
         if command == 'M' {
@@ -8,15 +8,15 @@ pub fn go(commands: &str) -> String {
         }
 
         if command == 'R' {
-            if direction == 'N' {
-                direction = 'E';
-            } else if direction == 'E' {
-                direction = 'S'
-            }
+            direction = match direction {
+                Direction::North => Direction::East, 
+                Direction::East => Direction::South,
+                _ => panic!("not yet implemented")
+            };
         }
     }
 
-    format!("0,{},{}", x, direction)
+    format!("0,{},{}", x, direction.to_string())
 }
 
 enum Direction {
