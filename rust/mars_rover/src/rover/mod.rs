@@ -55,4 +55,9 @@ mod rover_tests {
     fn can_rotate_right_thrice() {
         assert_eq!(go("RRR"), "0,0,W");
     }
+
+    #[test]
+    fn can_twirl_right() {
+        assert_eq!(go("RRRR"), "0,0,N");
+    }
 }

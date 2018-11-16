@@ -11,7 +11,7 @@ impl Direction {
             Direction::North => Direction::East,
             Direction::East => Direction::South,
             Direction::South => Direction::West,
-            _ => panic!("not yet implemented")
+            Direction::West => Direction::North
         }
     }
 
