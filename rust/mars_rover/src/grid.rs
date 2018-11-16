@@ -12,9 +12,9 @@ impl Grid {
 
     pub fn position_at(self, direction: &direction::Direction) -> Grid {
         match direction {
-            direction::Direction::North => Grid { x: self.x, y: (self.y + 1) % 10 },
-            direction::Direction::East => Grid { x: (self.x + 1) % 10, y: self.y },
-            direction::Direction::South => Grid { x: self.x, y: (self.y - 1) % 10 },
+            direction::Direction::North => Grid { x: self.x, y: modulo_ten(self.y + 1) },
+            direction::Direction::East => Grid { x: modulo_ten(self.x + 1), y: self.y },
+            direction::Direction::South => Grid { x: self.x, y: modulo_ten(self.y - 1) },
             _ => panic!("I can't move in this direction yet")
         }
     }
@@ -22,4 +22,8 @@ impl Grid {
     pub fn to_string(self) -> String {
         format!("{},{}", self.x, self.y)
     }
+}
+
+fn modulo_ten(n: i32) -> i32 {
+    ((n % 10) + 10) % 10
 }
