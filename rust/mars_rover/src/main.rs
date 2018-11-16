@@ -23,7 +23,7 @@ fn go(commands: &str) -> String {
         }
     }
 
-    format!("{},{},{}", grid.x, grid.y, direction.to_string())
+    format!("{},{}", grid.to_string(), direction.to_string())
 }
 
 #[cfg(test)]

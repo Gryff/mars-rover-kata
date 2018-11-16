@@ -13,4 +13,8 @@ impl Grid {
             _ => panic!("I can't move in this direction yet")
         }
     }
+
+    pub fn to_string(self) -> String {
+        format!("{},{}", self.x, self.y)
+    }
 }
