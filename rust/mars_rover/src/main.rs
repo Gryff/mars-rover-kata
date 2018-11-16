@@ -1,11 +1,12 @@
 mod direction;
+mod grid;
 
 fn main() {
     go("");
 }
 
 fn go(commands: &str) -> String {
-    let mut grid = Grid { x: 0, y: 0 };
+    let mut grid = grid::Grid { x: 0, y: 0 };
     let mut direction = direction::Direction::North;
 
     for command in commands.chars() {
@@ -23,21 +24,6 @@ fn go(commands: &str) -> String {
     }
 
     format!("{},{},{}", grid.x, grid.y, direction.to_string())
-}
-
-struct Grid {
-    x: i32,
-    y: i32
-}
-
-impl Grid {
-    fn position_at(self, direction: &direction::Direction) -> Grid {
-        match direction {
-            direction::Direction::North => Grid { x: self.x, y: (self.y + 1) % 10 },
-            direction::Direction::East => Grid { x: (self.x + 1) % 10, y: self.y },
-            _ => panic!("I can't move in this direction yet")
-        }
-    }
 }
 
 #[cfg(test)]
