@@ -1,12 +1,17 @@
 mod direction;
 
 pub fn go(commands: &str) -> String {
+    let mut x = 0;
     let mut y = 0;
     let mut direction = direction::Direction::North;
 
     for command in commands.chars() {
         if command == 'M' {
-            y = (y + 1) % 10;
+            match direction {
+                direction::Direction::North => y = (y + 1) % 10,
+                direction::Direction::East => x = x + 1,
+                _ => panic!("I can't move in this direction yet")
+            };
         }
 
         if command == 'R' {
@@ -18,7 +23,7 @@ pub fn go(commands: &str) -> String {
         }
     }
 
-    format!("0,{},{}", y, direction.to_string())
+    format!("{},{},{}", x, y, direction.to_string())
 }
 
 #[cfg(test)]
@@ -59,5 +64,10 @@ mod rover_tests {
         assert_eq!(go("LL"), "0,0,S");
         assert_eq!(go("LLL"), "0,0,E");
         assert_eq!(go("LLLL"), "0,0,N");
+    }
+
+    #[test]
+    fn can_move_east() {
+        assert_eq!(go("RM"), "1,0,E");
     }
 }
