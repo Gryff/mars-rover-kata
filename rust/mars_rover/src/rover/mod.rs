@@ -9,7 +9,7 @@ pub fn go(commands: &str) -> String {
         if command == 'M' {
             match direction {
                 direction::Direction::North => y = (y + 1) % 10,
-                direction::Direction::East => x = x + 1,
+                direction::Direction::East => x = (x + 1) % 10,
                 _ => panic!("I can't move in this direction yet")
             };
         }
@@ -69,5 +69,11 @@ mod rover_tests {
     #[test]
     fn can_move_east() {
         assert_eq!(go("RM"), "1,0,E");
+        assert_eq!(go("RMMM"), "3,0,E");
+    }
+
+    #[test]
+    fn can_wrap_around_east() {
+        assert_eq!(go("RMMMMMMMMMMMM"), "2,0,E");
     }
 }
