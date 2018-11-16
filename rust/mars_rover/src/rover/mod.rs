@@ -50,4 +50,9 @@ mod rover_tests {
     fn can_rotate_right_twice() {
         assert_eq!(go("RR"), "0,0,S");
     }
+
+    #[test]
+    fn can_rotate_right_thrice() {
+        assert_eq!(go("RRR"), "0,0,W");
+    }
 }

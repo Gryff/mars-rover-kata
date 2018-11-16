@@ -10,6 +10,7 @@ impl Direction {
         match self {
             Direction::North => Direction::East,
             Direction::East => Direction::South,
+            Direction::South => Direction::West,
             _ => panic!("not yet implemented")
         }
     }
