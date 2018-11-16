@@ -6,7 +6,7 @@ fn main() {
 }
 
 fn go(commands: &str) -> String {
-    let mut grid = grid::Grid { x: 0, y: 0 };
+    let mut grid = grid::Grid::new(0, 0);
     let mut direction = direction::Direction::North;
 
     for command in commands.chars() {

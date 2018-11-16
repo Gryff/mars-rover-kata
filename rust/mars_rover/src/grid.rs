@@ -6,6 +6,10 @@ pub struct Grid {
 }
 
 impl Grid {
+    pub fn new(x: i32, y: i32) -> Grid {
+        Grid { x: x, y: y }
+    }
+
     pub fn position_at(self, direction: &direction::Direction) -> Grid {
         match direction {
             direction::Direction::North => Grid { x: self.x, y: (self.y + 1) % 10 },
