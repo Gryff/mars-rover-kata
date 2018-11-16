@@ -1,6 +1,8 @@
+mod direction;
+
 pub fn go(commands: &str) -> String {
     let mut x = 0;
-    let mut direction = Direction::North;
+    let mut direction = direction::Direction::North;
 
     for command in commands.chars() {
         if command == 'M' {
@@ -13,32 +15,6 @@ pub fn go(commands: &str) -> String {
     }
 
     format!("0,{},{}", x, direction.to_string())
-}
-
-enum Direction {
-    North,
-    East,
-    South,
-    West
-}
-
-impl Direction {
-    fn rotate_right(self) -> Direction {
-        match self {
-            Direction::North => Direction::East, 
-            Direction::East => Direction::South,
-            _ => panic!("not yet implemented")
-        }
-    }
-
-    fn to_string(self) -> char {
-        match self {
-            Direction::North => 'N',
-            Direction::East => 'E',
-            Direction::South => 'S',
-            Direction::West => 'W',
-        }
-    }
 }
 
 #[cfg(test)]
