@@ -14,6 +14,7 @@ impl Grid {
         match direction {
             direction::Direction::North => Grid { x: self.x, y: (self.y + 1) % 10 },
             direction::Direction::East => Grid { x: (self.x + 1) % 10, y: self.y },
+            direction::Direction::South => Grid { x: self.x, y: (self.y - 1) % 10 },
             _ => panic!("I can't move in this direction yet")
         }
     }

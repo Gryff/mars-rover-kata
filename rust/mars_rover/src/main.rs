@@ -76,4 +76,9 @@ mod rover_tests {
     fn can_wrap_around_east() {
         assert_eq!(go("RMMMMMMMMMMMM"), "2,0,E");
     }
+
+    #[test]
+    fn can_move_south() {
+        assert_eq!(go("MMRRM"), "0,1,S");
+    }
 }
