@@ -86,4 +86,9 @@ mod rover_tests {
     fn can_wrap_around_south() {
         assert_eq!(go("RRMM"), "0,8,S");
     }
+
+    #[test]
+    fn can_move_west() {
+        assert_eq!(go("RMMLLM"), "1,0,W");
+    }
 }

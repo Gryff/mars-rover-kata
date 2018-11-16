@@ -15,7 +15,7 @@ impl Grid {
             Direction::North => Grid { x: self.x, y: modulo_ten(self.y + 1) },
             Direction::East => Grid { x: modulo_ten(self.x + 1), y: self.y },
             Direction::South => Grid { x: self.x, y: modulo_ten(self.y - 1) },
-            _ => panic!("I can't move in this direction yet")
+            Direction::West => Grid { x: modulo_ten(self.x - 1), y: self.y }
         }
     }
 
