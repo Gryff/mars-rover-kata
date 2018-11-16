@@ -1,12 +1,12 @@
 mod direction;
 
 pub fn go(commands: &str) -> String {
-    let mut x = 0;
+    let mut y = 0;
     let mut direction = direction::Direction::North;
 
     for command in commands.chars() {
         if command == 'M' {
-            x = (x + 1) % 10;
+            y = (y + 1) % 10;
         }
 
         if command == 'R' {
@@ -18,7 +18,7 @@ pub fn go(commands: &str) -> String {
         }
     }
 
-    format!("0,{},{}", x, direction.to_string())
+    format!("0,{},{}", y, direction.to_string())
 }
 
 #[cfg(test)]
