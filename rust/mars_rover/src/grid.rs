@@ -1,4 +1,4 @@
-use direction;
+use direction::Direction;
 
 pub struct Grid {
     pub x: i32,
@@ -10,11 +10,11 @@ impl Grid {
         Grid { x: x, y: y }
     }
 
-    pub fn position_at(self, direction: &direction::Direction) -> Grid {
+    pub fn position_at(self, direction: &Direction) -> Grid {
         match direction {
-            direction::Direction::North => Grid { x: self.x, y: modulo_ten(self.y + 1) },
-            direction::Direction::East => Grid { x: modulo_ten(self.x + 1), y: self.y },
-            direction::Direction::South => Grid { x: self.x, y: modulo_ten(self.y - 1) },
+            Direction::North => Grid { x: self.x, y: modulo_ten(self.y + 1) },
+            Direction::East => Grid { x: modulo_ten(self.x + 1), y: self.y },
+            Direction::South => Grid { x: self.x, y: modulo_ten(self.y - 1) },
             _ => panic!("I can't move in this direction yet")
         }
     }
