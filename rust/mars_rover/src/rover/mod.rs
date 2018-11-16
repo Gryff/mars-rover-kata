@@ -12,6 +12,10 @@ pub fn go(commands: &str) -> String {
         if command == 'R' {
             direction = direction.rotate_right();
         }
+
+        if command == 'L' {
+            direction = direction.rotate_left();
+        }
     }
 
     format!("0,{},{}", x, direction.to_string())
@@ -47,5 +51,13 @@ mod rover_tests {
         assert_eq!(go("RR"), "0,0,S");
         assert_eq!(go("RRR"), "0,0,W");
         assert_eq!(go("RRRR"), "0,0,N");
+    }
+
+    #[test]
+    fn can_rotate_left() {
+        assert_eq!(go("L"), "0,0,W");
+        assert_eq!(go("LL"), "0,0,S");
+        assert_eq!(go("LLL"), "0,0,E");
+        assert_eq!(go("LLLL"), "0,0,N");
     }
 }

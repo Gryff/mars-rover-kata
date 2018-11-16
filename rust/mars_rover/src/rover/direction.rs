@@ -14,6 +14,15 @@ impl Direction {
             Direction::West => Direction::North
         }
     }
+    
+    pub fn rotate_left(self) -> Direction {
+        match self {
+            Direction::North => Direction::West,
+            Direction::West => Direction::South,
+            Direction::South => Direction::East,
+            Direction::East => Direction::North
+        }
+    }
 
     pub fn to_string(self) -> char {
         match self {
