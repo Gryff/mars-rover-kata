@@ -1,29 +1,34 @@
 mod direction;
 mod grid;
 
+use grid::Grid;
+use direction::Direction;
+
 fn main() {
     go("");
 }
 
 fn go(commands: &str) -> String {
-    let mut grid = grid::Grid::new(0, 0);
-    let mut direction = direction::Direction::North;
+    let starting_position = Grid::new(0, 0);
+    let starting_direction = Direction::North;
 
-    for command in commands.chars() {
-        if command == 'M' {
-            grid = grid.position_at(&direction);
-        }
+    let (final_position, final_direction) = commands
+        .chars()
+        .fold((starting_position, starting_direction), execute_command);
 
-        if command == 'R' {
-            direction = direction.rotate_right();
-        }
+    format!("{},{}", final_position.to_string(), final_direction.to_string())
+}
 
-        if command == 'L' {
-            direction = direction.rotate_left();
-        }
+fn execute_command((grid, direction): (Grid, Direction), command: char) -> (Grid, Direction) {
+    if command == 'M' {
+        (grid.position_at(&direction), direction)
+    } else if command == 'R' {
+        (grid, direction.rotate_right())
+    } else if command == 'L' {
+        (grid, direction.rotate_left())
+    } else {
+        panic!("this should never happen")
     }
-
-    format!("{},{}", grid.to_string(), direction.to_string())
 }
 
 #[cfg(test)]
