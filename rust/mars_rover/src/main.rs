@@ -96,4 +96,9 @@ mod rover_tests {
     fn can_wrap_around_west() {
         assert_eq!(go("LMM"), "8,0,W");
     }
+
+    #[test]
+    fn lots_of_combined_commands() {
+        assert_eq!(go("MMRMLRMMMLLLM"), "4,1,S");
+    }
 }
