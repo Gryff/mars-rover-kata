@@ -1,3 +1,6 @@
+use std::fmt;
+use std::fmt::Display;
+
 use direction::Direction;
 
 pub struct Grid {
@@ -18,9 +21,11 @@ impl Grid {
             Direction::West => Grid { x: modulo_ten(self.x - 1), y: self.y }
         }
     }
+}
 
-    pub fn to_string(self) -> String {
-        format!("{},{}", self.x, self.y)
+impl Display for Grid {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{},{}", self.x, self.y)
     }
 }
 

@@ -1,3 +1,6 @@
+ use std::fmt;
+ use std::fmt::Display;
+
 pub enum Direction {
     North,
     East,
@@ -23,14 +26,16 @@ impl Direction {
             Direction::East => Direction::North
         }
     }
+}
 
-    pub fn to_string(self) -> char {
-        match self {
+impl Display for Direction {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", match self {
             Direction::North => 'N',
             Direction::East => 'E',
             Direction::South => 'S',
             Direction::West => 'W',
-        }
+        })
     }
 }
 

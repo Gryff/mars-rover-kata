@@ -1,5 +1,7 @@
 mod direction;
 mod grid;
+use std::fmt;
+use std::fmt::Display;
 
 use grid::Grid;
 use direction::Direction;
@@ -8,26 +10,61 @@ fn main() {
     go("");
 }
 
+struct Location {
+    position: Grid,
+    direction: Direction,
+}
+
+impl Location {
+    fn moveForward (self) -> Location {
+        Location {
+            position: self.position.position_at(&self.direction),
+            direction: self.direction
+        }
+    }
+
+    fn rotate_left(self) -> Location {
+        Location {
+            position: self.position,
+            direction: self.direction.rotate_left()
+        }
+    }
+
+    fn rotate_right(self) -> Location {
+        Location {
+            position: self.position,
+            direction: self.direction.rotate_right()
+        }
+    }
+}
+
+impl Display for Location {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{},{}", self.position, self.direction)
+    }
+}
+
 fn go(commands: &str) -> String {
     let starting_position = Grid::new(0, 0);
     let starting_direction = Direction::North;
+    let starting_location = Location { position: starting_position, direction: starting_direction };
 
-    let (final_position, final_direction) = commands
+    let final_location = commands
         .chars()
-        .fold((starting_position, starting_direction), execute_command);
+        .fold(starting_location, execute_command);
 
-    format!("{},{}", final_position.to_string(), final_direction.to_string())
+    format!("{}", final_location)
 }
 
-fn execute_command((grid, direction): (Grid, Direction), command: char) -> (Grid, Direction) {
+fn execute_command(location: Location, command: char) -> Location {
     if command == 'M' {
-        (grid.position_at(&direction), direction)
+        location.moveForward()
     } else if command == 'R' {
-        (grid, direction.rotate_right())
+        location.rotate_right()
     } else if command == 'L' {
-        (grid, direction.rotate_left())
+        location.rotate_left()
     } else {
-        panic!("this should never happen")
+        unreachable!("this should never happen")
     }
 }
 
