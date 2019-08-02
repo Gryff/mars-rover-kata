@@ -16,7 +16,7 @@ struct Location {
 }
 
 impl Location {
-    fn moveForward (self) -> Location {
+    fn move_forward (self) -> Location {
         Location {
             position: self.position.position_at(&self.direction),
             direction: self.direction
@@ -58,7 +58,7 @@ fn go(commands: &str) -> String {
 
 fn execute_command(location: Location, command: char) -> Location {
     if command == 'M' {
-        location.moveForward()
+        location.move_forward()
     } else if command == 'R' {
         location.rotate_right()
     } else if command == 'L' {
